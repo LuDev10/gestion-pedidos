@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Gestor de Pedidos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<div class="form-container">
+    <h1>📦 Gestor de Pedidos</h1>
+    <h2>Menú Principal</h2>
+
+    <div class="menu-vertical">
+        <a href="/nuevo" class="menu-btn verde">➕ Agregar Pedido</a>
+        <a href="/listar-pedidos" class="menu-btn verde">📋 Listar Pedidos</a>
+        <a href="/buscar-pedido" class="menu-btn verde">🔍 Buscar Pedido por ID</a>
+        <a href="/editar-pedido" class="menu-btn verde">✏️ Actualizar Pedido</a>
+        <a href="/eliminar-pedido" class="menu-btn rojo">🗑️ Eliminar Pedido</a>
+    </div>
+</div>
+</body>
+</html>

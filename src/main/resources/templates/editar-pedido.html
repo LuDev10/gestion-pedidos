@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Pedido</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="centro-pantalla">
+<h1>Editar Pedido</h1>
+<div class="form-container">
+    <form method="post" th:action="@{/editar-pedido}">
+        <label for="id">Ingrese el ID del pedido a editar:</label>
+        <input type="number" id="id" name="id" required class="input-sm">
+        <div class="form-actions">
+            <button type="submit" class="btn btn-sm">Buscar Pedido</button>
+            <a href="/inicio" class="btn btn-sm">Volver</a>
+        </div>
+        <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+    </form>
+</div>
+</body>
+</html>

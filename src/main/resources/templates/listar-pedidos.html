@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Pedidos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="centro-pantalla">
+<h1>Listado de Pedidos</h1>
+<div class="form-container">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pedido : ${pedidos}">
+            <td th:text="${pedido.id}">1</td>
+            <td th:text="${pedido.codigo}">ABC123</td>
+            <td th:text="${pedido.fecha}">2024-07-15</td>
+            <td class="acciones">
+                <form th:action="@{'/pedido/' + ${pedido.id}}" method="get">
+                    <button type="submit" class="icon-button icon-view">🔍</button>
+                </form>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="form-actions">
+        <a href="/inicio" class="btn">Volver al Menú</a>
+    </div>
+</div>
+</body>
+</html>

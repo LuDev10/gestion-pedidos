@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Detalle del Pedido</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body class="centro-pantalla">
+
+<h1>Detalle del Pedido</h1>
+
+<div class="form-container" style="max-width: 600px;">
+    <p><strong>ID:</strong> <span th:text="${pedido.id}">1</span></p>
+    <p><strong>Código:</strong> <span th:text="${pedido.codigo}">Luis</span></p>
+    <p><strong>Fecha:</strong> <span th:text="${pedido.fecha}">2025-07-15</span></p>
+
+    <hr>
+
+    <h3>Productos</h3>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="linea : ${pedido.lineas}">
+            <td th:text="${linea.nombreProducto}">Producto</td>
+            <td th:text="${linea.cantidad}">1</td>
+            <td th:text="${#numbers.formatDecimal(linea.subtotal / linea.cantidad, 1, 'COMMA', 2, 'POINT')}">$700.00
+            </td>
+            <td th:text="${linea.subtotal}">$1400.00</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Total:</strong> $<span th:text="${pedido.total}">100.00</span></p>
+
+    <div class="form-actions">
+        <a href="/buscar-pedido" class="btn btn-sm">Volver a búsqueda</a>
+        <a href="/inicio" class="btn btn-sm">Volver al menú</a>
+    </div>
+</div>
+
+</body>
+</html>

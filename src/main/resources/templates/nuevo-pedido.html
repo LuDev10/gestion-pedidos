@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Nuevo Pedido</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/script.js}" defer></script>
+</head>
+<body class="centro-pantalla">
+
+<h1>Agregar Nuevo Pedido</h1>
+
+<div class="form-container" style="max-width: 600px;">
+    <form th:action="@{/nuevo}" method="post" th:object="${pedido}">
+        <label for="codigo">Titular del pedido:</label>
+        <input type="text" id="codigo" name="codigo" th:field="*{codigo}" class="input-sm" required/>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" th:field="*{fecha}" class="input-sm" required/>
+
+        <hr>
+
+        <h3>Productos</h3>
+
+        <div class="producto-selector">
+            <select id="productoSelect" class="input-sm">
+                <option value="">Seleccione un producto</option>
+                <option th:each="producto : ${productos}"
+                        th:value="${producto.id}"
+                        th:text="${producto.nombre + ' - $' + producto.precio}">
+                </option>
+            </select>
+
+            <input type="number" id="cantidadInput" placeholder="Cantidad" class="input-sm" min="1"/>
+
+            <button type="button" class="btn btn-sm" onclick="agregarProducto()">Agregar</button>
+        </div>
+
+        <table id="tablaProductos">
+            <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acción</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div id="lineasContainer">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-sm">Guardar Pedido</button>
+            <a href="/inicio" class="btn btn-sm">Volver al Menú</a>
+            <a href="/listar-pedidos" class="btn btn-sm">Volver al Listado</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!-- templates/editar-pedido-formulario.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Pedido</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="centro-pantalla">
+
+<div class="form-container">
+    <h2>Actualizar Pedido</h2>
+
+    <form th:action="@{/guardar-pedido-editado}" th:object="${pedido}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" th:field="*{codigo}" required class="input-sm"/>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" th:field="*{fecha}" required class="input-sm"/>
+
+        <h3>Líneas del pedido</h3>
+        <div th:each="linea, iterStat : *{lineas}">
+            <input type="hidden" th:field="*{lineas[__${iterStat.index}__].id}"/>
+            <label>Producto:</label>
+            <select th:field="*{lineas[__${iterStat.index}__].productoId}" class="input-sm">
+                <option th:each="prod : ${productos}"
+                        th:value="${prod.id}"
+                        th:text="${prod.nombre}">Producto
+                </option>
+            </select>
+
+            <label>Cantidad:</label>
+            <input type="number" th:field="*{lineas[__${iterStat.index}__].cantidad}" min="1" class="input-sm"/>
+            <br><br>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-sm">Actualizar</button>
+            <a href="/editar-pedido" class="btn btn-sm">Volver a búsqueda</a>
+            <a href="/inicio" class="btn btn-sm">Volver al menú Principal</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

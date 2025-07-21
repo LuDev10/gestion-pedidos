@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Pedido</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="centro-pantalla">
+<h1>Buscar Pedido por ID</h1>
+<div class="form-container">
+    <form method="post" th:action="@{/buscar-pedido}">
+        <label for="id">ID del pedido:</label>
+        <input type="number" name="id" id="id" required class="input-sm">
+        <div class="form-actions">
+            <button type="submit" class="btn btn-sm">Buscar</button>
+            <a href="/inicio" class="btn btn-sm">Volver al Menú</a>
+        </div>
+        <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+    </form>
+</div>
+</body>
+</html>

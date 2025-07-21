@@ -116,6 +116,18 @@ src/
 
 ---
 
+### Endpoints Principales (Para probar la collections que adjunte a la entrega del repositorio)
+
+| Método | URL                  | Descripción                |
+|--------|----------------------|----------------------------|
+| GET    | /inicio              | Página principal           |
+| GET    | /listar-pedidos      | Lista todos los pedidos    |
+| GET    | /detalle-pedido/{id} | Muestra detalle del pedido |
+| POST   | /guardar-pedido      | Crea un nuevo pedido       |
+| POST   | /eliminar-pedido     | Elimina un pedido por ID   |
+
+---
+
 ## 🤝 Autor
 
 **Luis Díaz**  
